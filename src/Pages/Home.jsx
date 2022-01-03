@@ -93,25 +93,26 @@ function Home(props) {
 					/>
 				))}
 			</Box>
-
-			<Flex direction="column">
-				<Text fontWeight="semibold" fontSize="md" p="2.5">
-					People You May Know
-				</Text>
-				<Grid display={["none", "grid"]} templateColumns={["repeat(2, 1fr)"]} columnGap={6} rowGap={4}>
-					{profiles.map((profile) => (
-						<GridItem key={profile._id}>
-							<ProfiletoFollow
-								id={profile._id}
-								profilePic={profile.profilePic}
-								username={profile.username}
-								name={profile.name}
-								handelFollowButtonClick={handelFollowButtonClick}
-							/>
-						</GridItem>
-					))}
-				</Grid>
-			</Flex>
+			{profiles.length > 0 && (
+				<Flex direction="column" display={["none", "flex"]}>
+					<Text fontWeight="semibold" fontSize="md" p="2.5">
+						People You May Know
+					</Text>
+					<Grid display={["none", "grid"]} templateColumns={["repeat(2, 1fr)"]} columnGap={6} rowGap={4}>
+						{profiles.map((profile) => (
+							<GridItem key={profile._id}>
+								<ProfiletoFollow
+									id={profile._id}
+									profilePic={profile.profilePic}
+									username={profile.username}
+									name={profile.name}
+									handelFollowButtonClick={handelFollowButtonClick}
+								/>
+							</GridItem>
+						))}
+					</Grid>
+				</Flex>
+			)}
 		</Flex>
 	);
 }
